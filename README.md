@@ -1,0 +1,1 @@
+KreditaX is an advanced AI-powered credit scoring engine designed to help financial institutions make faster, smarter, and more accurate lending decisions. It analyzes customer data, evaluates risk in real time, and generates reliable credit scores using machine learning and regulatory-aligned criteria.
