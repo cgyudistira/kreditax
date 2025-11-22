@@ -4,6 +4,7 @@
 
 [![Python Version](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/downloads/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.95%2B-009688.svg)](https://fastapi.tiangolo.com/)
+[![Streamlit](https://img.shields.io/badge/Streamlit-1.28%2B-FF4B4B.svg)](https://streamlit.io/)
 [![XGBoost](https://img.shields.io/badge/XGBoost-1.7%2B-orange.svg)](https://xgboost.readthedocs.io/)
 [![LightGBM](https://img.shields.io/badge/LightGBM-3.3%2B-yellow.svg)](https://lightgbm.readthedocs.io/)
 [![SHAP](https://img.shields.io/badge/SHAP-0.41%2B-red.svg)](https://shap.readthedocs.io/)
@@ -102,6 +103,11 @@ kreditax/
 │   └── evaluation/           # Metrics & validation
 │       └── evaluate.py
 │
+├── 🖥️  dashboard/             # Streamlit Dashboard
+│   ├── app.py                # Dashboard application
+│   ├── README.md             # Dashboard guide
+│   └── __init__.py
+│
 ├── 🔧 scripts/                # Utility Scripts
 │   ├── generate_data.py      # Data generator
 │   └── train_model.py        # Training pipeline
@@ -112,6 +118,7 @@ kreditax/
 │
 ├── 📚 docs/                   # Documentation
 │   ├── QUICKSTART.md         # Quick start guide
+│   ├── DASHBOARD.md          # Dashboard documentation
 │   ├── api.md                # API reference
 │   ├── architecture.md       # System design
 │   ├── pojk-compliance.md    # Compliance docs
@@ -246,6 +253,40 @@ curl -X POST "http://localhost:8000/api/v1/predict" \
 
 ---
 
+## 🖥️ Interactive Dashboard
+
+KreditaX includes a professional **Streamlit-based dashboard** for interactive credit scoring:
+
+### Features
+- 📝 **Credit Application Form**: User-friendly interface for data entry
+- 📊 **Real-time Risk Assessment**: Instant predictions with SHAP explanations
+- 📈 **Model Performance Viewer**: Visualize metrics, ROC curves, and calibration plots
+- 📋 **Audit Log Browser**: Filter, analyze, and export decision logs
+- ⚙️ **Configuration Panel**: Adjust risk thresholds and system settings
+
+### Start Dashboard
+
+```bash
+# Start the backend API
+uvicorn app.main:app --reload
+
+# In a new terminal, start the dashboard
+streamlit run dashboard/app.py
+```
+
+**Access**: http://localhost:8501
+
+### Why Streamlit?
+- ✅ Professional enterprise-grade UI
+- ✅ Interactive data visualization with Plotly
+- ✅ Superior layout control and customization
+- ✅ Better suited for complex dashboards
+- ✅ Excellent state management
+
+See [docs/DASHBOARD.md](docs/DASHBOARD.md) for complete dashboard documentation.
+
+---
+
 ## 🧪 Testing
 
 ### Run All Tests
@@ -302,31 +343,9 @@ services:
       - ./data:/app/data
       - ./ml/artifacts:/app/ml/artifacts
 ```
-
----
-
-## 📋 Development Phases
-
-The KreditaX system was developed through a structured 8-phase approach:
-
-1. **Project Architecture Setup**: Modular directory structure and package organization
-2. **ML Pipeline Development**: Training, evaluation, and preprocessing infrastructure
-3. **Model Explainability Integration**: SHAP framework for regulatory compliance
-4. **RESTful API Development**: Enterprise-grade FastAPI backend
-5. **Quality Assurance & Testing**: Comprehensive test coverage
-6. **Infrastructure Configuration**: Docker, CI/CD, and deployment automation
-7. **Technical Documentation**: Complete API, compliance, and architecture docs
-8. **System Validation**: End-to-end testing and performance verification
-
-**Status**: ✅ All phases completed with production-ready quality standards
-
----
-
-## 📚 Documentation
-
-| Document | Description |
 |----------|-------------|
 | **[Quick Start Guide](docs/QUICKSTART.md)** | Get up and running in 5 minutes |
+| **[Dashboard Guide](docs/DASHBOARD.md)** | Interactive Streamlit UI documentation |
 | **[API Documentation](docs/api.md)** | Complete API reference with examples |
 | **[POJK Compliance](docs/pojk-compliance.md)** | Regulatory compliance documentation |
 | **[Architecture](docs/architecture.md)** | System design and technical architecture |
